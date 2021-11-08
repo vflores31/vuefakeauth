@@ -1,5 +1,5 @@
 {
-  "name": "basicvuerouter",
+  "name": "vuefakeauth",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^6.8.0",
     "vue": "^3.2.16",
     "vue-router": "^4.0.12"
   },

@@ -1,44 +1,65 @@
+<script setup>
+import { useRouter } from "vue-router";
+import useAuth from "../composable/useAuth";
+
+const { isAuthenticated, logout } = useAuth();
+
+const router = useRouter();
+
+const loggingOut = () => {
+  logout();
+  router.push("/");
+};
+</script>
+
 <template>
-  <div class="bg-green-500 text-yellow-200">
-    <div class="container mx-auto flex items-center justify-between">
-      <h1 class="tracking-tighter text-3xl font-thin">
-        Puppy<span class="font-normal">Barn</span>
+  <div class="text-green-200 bg-indigo-800">
+    <div class="container flex items-center justify-between mx-auto">
+      <h1 class="text-3xl font-thin tracking-tighter">
+        Vue<span class="font-normal">FakeAuth</span>
       </h1>
       <nav>
         <ul class="flex space-x-4">
           <router-link to="/">
             <li
-              class="
-                py-8
-                px-4
-                hover:cursor-pointer hover:bg-green-500 hover:text-green-800
-              "
+              class="px-4 py-8  hover:cursor-pointer hover:bg-indigo-500 hover:text-indigo-800"
             >
               Home
             </li>
           </router-link>
           <router-link :to="{ name: 'About' }">
             <li
-              class="
-                py-8
-                px-4
-                hover:cursor-pointer hover:bg-green-500 hover:text-green-800
-              "
+              class="px-4 py-8  hover:cursor-pointer hover:bg-indigo-500 hover:text-indigo-800"
             >
               About
             </li>
           </router-link>
-          <router-link :to="{ path: '/hello', name: 'Hello' }">
+          <router-link
+            v-if="!isAuthenticated"
+            :to="{ path: '/login', name: 'Login' }"
+          >
             <li
-              class="
-                py-8
-                px-4
-                hover:cursor-pointer hover:bg-green-500 hover:text-green-800
-              "
+              class="px-4 py-8  hover:cursor-pointer hover:bg-indigo-500 hover:text-indigo-800"
             >
-              Hello
+              Login
             </li>
           </router-link>
+          <div v-else class="flex">
+            <router-link :to="{ name: 'Secret' }">
+              <li
+                class="px-4 py-8  hover:cursor-pointer hover:bg-indigo-500 hover:text-indigo-800"
+              >
+                Secret
+              </li>
+            </router-link>
+            <button @click="loggingOut">
+              <li
+                class="px-4 py-8  hover:cursor-pointer hover:bg-indigo-500 hover:text-indigo-800"
+              >
+                Logout
+              </li>
+            </button>
+          </div>
         </ul>
       </nav>
     </div>

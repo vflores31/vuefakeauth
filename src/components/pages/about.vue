@@ -1,5 +1,8 @@
+<script setup></script>
+
 <template>
-  <h1>About Page</h1>
-  <h1>-----------</h1>
-  <p>We believe in happiness and comfort for all pups in all homes. Therefore, we created a website with all of our fun, exciting, and comforting items we can offer to make every pup  happy and fulfilled in their home. :)</p>
+  <div class="flex flex-col items-center justify-center min-h-screen-nonav">
+    <h2 class="text-6xl tracking-tighter font-extralight">About Page</h2>
+    <img src="../../assets/bgabout.png" alt="Hello BG" />
+  </div>
 </template>

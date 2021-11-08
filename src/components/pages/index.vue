@@ -1,7 +1,21 @@
+<script setup>
+import useAuth from '../../composable/useAuth';
+const { isAuthenticated, user } = useAuth();
+</script>
+
 <template>
-  <h1>Home Page</h1>
-  <h1>----------</h1>
-  <p>Featuring below is our new seasonal items! Dress your puppies in the newest and cutest sweaters for christmas dinner or wrap up a toy snowman for their christmas present! </p>
-  <p> .</p>
-  <p  class="text-center text.bold"> 50% off halloween items! </p>
+  <div
+    class="flex flex-col items-center justify-center space-y-12  min-h-screen-nonav"
+  >
+    <h2
+      v-if="!isAuthenticated"
+      class="text-6xl tracking-tighter font-extralight"
+    >
+      Welcome
+    </h2>
+    <h2 v-else class="text-6xl tracking-tighter font-extralight">
+      Welcome {{ user }}
+    </h2>
+    <img src="../../assets/bgindex.png" alt="Hello BG" />
+  </div>
 </template>
